@@ -90,11 +90,11 @@ def train_lda(id2word, corpus, num_topics=10):
     lda_model = gensim.models.LdaModel(corpus=corpus,
                                        id2word=id2word,
                                        num_topics=num_topics,
-                                       alpha=50 / num_topics,
-                                       eta=0.1,
+                                       alpha=0.01,
+                                       eta=0.0001,
                                        chunksize=1,
                                        minimum_probability=0.001,
-                                       passes=5
+                                       passes=2
                                        )
     doc_lda = lda_model[corpus]
 
@@ -103,11 +103,31 @@ def train_lda(id2word, corpus, num_topics=10):
 
 if __name__ == "__main__":
     corpus_1 = Corpus()
-    corpus_1.add_book("./data/goethe_goetz_von_berlichingen.txt", "goetz", True)
+    #corpus_1.add_book("./data/goethe_goetz_von_berlichingen.txt", "goetz", True)
     corpus_1.add_book("./data/goethe_die_leiden_des_jungen_werther.txt", "werther")
     corpus_1.remove_speakers()
 
     id2word, lda_corpus = prepare_for_lda(corpus_1.to_list())
     # print(prepared[0][200:300])
-    lda_model, doc_lda = train_lda(id2word, lda_corpus, 5)
+    lda_model, doc_lda = train_lda(id2word, lda_corpus, 3)
     pprint(lda_model.print_topics(num_words=20))
+
+    import pyLDAvis.gensim
+    import pickle
+    import pyLDAvis
+    import os
+
+    # Visualize the topics
+    # pyLDAvis.enable_notebook()
+    LDAvis_data_filepath = os.path.join('./results/ldavis_prepared_' + str(3))
+    # # this is a bit time consuming - make the if statement True
+    # # if you want to execute visualization prep yourself
+    if 1 == 1:
+        LDAvis_prepared = pyLDAvis.gensim.prepare(lda_model, lda_corpus, id2word)
+        with open(LDAvis_data_filepath, 'wb') as f:
+            pickle.dump(LDAvis_prepared, f)
+    # load the pre-prepared pyLDAvis data from disk
+    with open(LDAvis_data_filepath, 'rb') as f:
+        LDAvis_prepared = pickle.load(f)
+    pyLDAvis.save_html(LDAvis_prepared, './results/ldavis_prepared_' + str(3) + '.html')
+    LDAvis_prepared

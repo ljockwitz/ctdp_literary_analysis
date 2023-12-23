@@ -30,7 +30,10 @@ were manually removed from each `txt`-file but the latter can still be found in 
 
 This project includes the following works:
 
-- _Die Leiden des jungen Werther_ ([Band 1](https://www.gutenberg.org/ebooks/2407) + [2](https://www.gutenberg.org/ebooks/2408)), Johann Wolfgang von Goethe
+- [_Die Leiden des jungen Werther - Band 1_](https://www.gutenberg.org/ebooks/2407), Johann Wolfgang von Goethe
+- [_Die Leiden des jungen Werther - Band 2_](https://www.gutenberg.org/ebooks/2408), Johann Wolfgang von Goethe
+- [_Die Räuber_](), Friedrich Schiller
+- [_Kabale und Liebe_](), Friedrich Schiller
 - [_Götz von Berlichingen_](https://www.gutenberg.org/ebooks/2321), Johann Wolfgang von Goethe
 - _Iphigenie auf Tauris_
 - _Novelle_?
