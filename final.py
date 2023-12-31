@@ -1,10 +1,10 @@
-from lab3 import Corpus, prepare_for_lda, train_lda, visualize
-
-from collections import Counter
 import re
 import spacy
 import matplotlib.pyplot as plt
 import numpy as np
+
+from lab3 import Corpus, prepare_for_lda, train_lda, visualize
+from collections import Counter
 
 nlp = spacy.load("de_core_news_sm")
 
